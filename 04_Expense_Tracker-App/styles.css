@@ -16,7 +16,8 @@ body {
 }
 
 .container {
-  width: 400px;
+  max-width: 600px;
+  width: 100%;
   padding: 20px;
   background-color: #1e1e1e;
   border-radius: 10px;
@@ -32,26 +33,29 @@ h3 {
 
 form {
   display: flex;
+  align-items: center;
+  gap: 10px;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
 input[type="text"],
 input[type="number"] {
-  width: 45%;
+  width: 100%;
   padding: 10px;
   background-color: #333333;
   border: none;
   border-radius: 5px;
   color: #fff;
   outline: none;
-  margin: 3px;
 }
 
 button {
   padding: 10px;
   background-color: #6200ea;
   border: none;
+  outline: none;
+  text-wrap: nowrap;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
