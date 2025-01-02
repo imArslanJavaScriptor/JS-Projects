@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const weatherData = await fetchWeatherData(cityName)
             displayWeatherData(weatherData)
-            
         } catch (error) {
             showError()
         }
@@ -27,21 +26,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function fetchWeatherData(city) {
         // Get Data
-        const url = `https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon=${city}&exclude={part}&appid=${API_KEY}`
-        console.log(url)
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+        let response = await fetch(url)
+        console.log(typeof response)
+        console.log("Response ", response)
+
+        if(!response.ok) {
+            console.error("City Data Not Found")
+        }
+        const data = await response.json()
+        return data
     }
 
     fetchWeatherData("Lahore")
 
-    function displayWeatherData(weatherData) {
-        // Display Data
+    function displayWeatherData(data) {
+        console.log(data)
+        const {name, main, weather} = data
+        cityNameDisplay.textContent = name
+        weatherInfo.classList.remove("hidden")
+        temperatureDisplay.textContent = `Temprature: ${main.temp}`
+        descriptionDisplay.textContent = `Weather: ${weather[0].description}`
+
     }
 
     function showError() {
-        weatherInfo.classList.add("hidden")
-        errorMessage.classList.remove("hidden")
+        weatherInfo.classList.remove("hidden")
+        errorMessage.classList.add("hidden")
     }
-
-
-
 })
