@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const cityInput = document.getElementById("city-input")    
+    const cityInput = document.getElementById("city-input")
     const getWeatherBtn = document.getElementById("get-weather-btn")
     const weatherInfo = document.getElementById("weather-info")
     const cityNameDisplay = document.getElementById("city-name")
@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const API_KEY = "706e259ab8fb31a1827d3a6ef48c9845" // env Variables
     getWeatherBtn.addEventListener("click", async () => {
         const cityName = cityInput.value.trim()
-        if(!cityName) return
+        if (!cityName) return
 
         // Remember!
         // it may throw an error
         // server/database is always in another continent
-        
+
         try {
             const weatherData = await fetchWeatherData(cityName)
             displayWeatherData(weatherData)
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(typeof response)
         console.log("Response ", response)
 
-        if(!response.ok) {
+        if (!response.ok) {
             console.error("City Data Not Found")
         }
         const data = await response.json()
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayWeatherData(data) {
         console.log(data)
-        const {name, main, weather} = data
+        const { name, main, weather } = data
         cityNameDisplay.textContent = name
         weatherInfo.classList.remove("hidden")
         temperatureDisplay.textContent = `Temprature: ${main.temp}`
