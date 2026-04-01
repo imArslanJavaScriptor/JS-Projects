@@ -1,0 +1,7 @@
+const inputWeight = document.getElementById("input-weight")
+const inputHeight = document.getElementById("input-height")
+const calculateBtn = document.getElementById("btn-calculate")
+const resultBox =  document.getElementById("result-box")
+const bmiValue = document.getElementById("bmi-value")
+const bmiCategory = document.getElementById("bmi-category")
+const bmiMessage = document.getElementById("bmi-message")
